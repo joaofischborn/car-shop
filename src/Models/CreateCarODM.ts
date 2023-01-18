@@ -29,6 +29,14 @@ class CreateCarODM {
   public async getCarById(id: string) {
     return this.model.findById(id);
   }
+
+  public async updateCarById(_id: string, car: ICar) {
+    return this.model.findByIdAndUpdate(
+      { _id },
+      { ...car },
+      { new: true },
+    );
+  }
 }
 
 export default CreateCarODM;

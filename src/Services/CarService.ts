@@ -24,6 +24,13 @@ class CarService {
     if (!car) throw new Error('Car not found');
     return new Car(car);
   }
+
+  public async updateCarById(id: string, car: ICar) {
+    if (!isValidObjectId(id)) throw new Error('Invalid mongo id');
+    const updateCar = await this.carODM.updateCarById(id, car);
+    if (!updateCar) throw new Error('Car not found');
+    return new Car(updateCar);
+  }
 }
 
 export default CarService;
